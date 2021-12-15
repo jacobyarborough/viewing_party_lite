@@ -8,6 +8,8 @@ RSpec.describe 'new user registration page' do
     expect(page).to have_content("Register New User")
     expect(page).to have_content("Name")
     expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
+    expect(page).to have_content("Password confirmation")
     expect(page).to have_button("Register")
   end
 
@@ -16,6 +18,8 @@ RSpec.describe 'new user registration page' do
 
     fill_in :name, with: "Snoopy"
     fill_in :email, with: "snoopy@peanuts.com"
+    fill_in :password, with: "Password123"
+    fill_in :password_confirmation, with: "Password123"
     click_on "Register"
 
     expect(page).to have_content("Snoopy")
@@ -28,7 +32,9 @@ RSpec.describe 'new user registration page' do
 
     fill_in :name, with: ""
     fill_in :email, with: "sally@peanuts.com"
-
+    fill_in :password, with: "Password123"
+    fill_in :password_confirmation, with: "Password123"
+    
     expect(current_path).to eq('/register')
   end
 end
