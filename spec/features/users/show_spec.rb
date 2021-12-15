@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'user dashboard page' do
   describe 'functionality' do
-    let!(:user_1) { create(:user) }
-    let!(:user_2) { create(:user) }
+    let!(:user_1) { create(:user, password: 'Password1', password_confirmation: 'Password1') }
+    let!(:user_2) { create(:user, password: 'Password1', password_confirmation: 'Password1') }
     let!(:party_1) { create(:party, user_id: user_1.id, movie_id: 1) }
     let!(:party_2) { create(:party, user_id: user_1.id, movie_id: 2) }
     let!(:party_3) { create(:party, user_id: user_2.id, movie_id: 3) }

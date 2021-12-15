@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'landing page' do 
   describe 'happy path functionality' do
-    let!(:users) { create_list(:user, 2) }
+    let!(:users) { create_list(:user, 2, password: 'password1', password_confirmation: 'password1') }
 
     before(:each) do
       visit root_path
