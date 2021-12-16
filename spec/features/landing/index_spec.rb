@@ -19,7 +19,7 @@ RSpec.describe 'landing page' do
         within "#users" do
           click_link "#{users[0][:email]}"
 
-          expect(current_path).to eq("/users/#{users[0].id}")
+          expect(current_path).to eq("/login")
       end
       end 
     end 
@@ -38,6 +38,12 @@ RSpec.describe 'landing page' do
 
     it 'shows the application name' do 
       expect(page).to have_content("Viewing Party Lite")
+    end 
+
+    it 'has a link to the login page' do 
+      click_button "Login"
+
+      expect(current_path).to eq('/login')
     end 
   end 
 

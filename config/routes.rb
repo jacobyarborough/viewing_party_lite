@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create'
   get '/users/:id', to: 'users#show'
 
+  get '/login', to: 'users#credential_enter'
+  post '/login', to: 'users#credential_check'
+
   get '/users/:id/discover', to: 'movies#discover'
   get '/users/:id/movies', to: 'movies#index', as: "user_movies"
   get '/users/:id/movies/:movie_id', to: 'movies#show'

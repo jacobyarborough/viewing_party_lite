@@ -4,11 +4,15 @@
 Existing Users:<br>
 <% if @users.count > 0 %>
   <% @users.each do |user| %>
-    <%= link_to user.email, "/users/#{user.id}" %><br>
+    <%= link_to user.email, "/login" %><br>
   <% end %><br>
 <% else %>
   There are no existing users. Create a new user to get started!<br>
 <% end %><br>
+</div>
+
+<div id="login-button">
+<%= button_to("Login", '/login', method: :get) %>
 </div>
 
 <div id="new-user-button">
