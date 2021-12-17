@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
-  get 'discover', to: 'movies#discover'
-  get '/users/:id/movies', to: 'movies#index', as: "user_movies"
-  get '/users/:id/movies/:movie_id', to: 'movies#show'
+  get '/discover', to: 'movies#discover'
+  get '/movies', to: 'movies#index', as: "user_movies"
+  get 'movies/:movie_id', to: 'movies#show'
 
   # Parties Controller
   get '/users/:id/movies/:movie_id/party/new', to: 'parties#new'
