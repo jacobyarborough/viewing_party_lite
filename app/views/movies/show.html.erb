@@ -1,6 +1,6 @@
 <h2><%= @movie.movie_title %></h2>
 
-<%= button_to("Discover Movies", "/users/#{@user_id}/discover", method: :get, local: true) %><br>
+<%= button_to("Discover Movies", "/discover", method: :get, local: true) %><br>
 
 <%= @movie.vote_average %><br>
 <%= @movie.duration %><br>
@@ -27,7 +27,7 @@ Reviews:<br>
   <br>
 <% end %><br>
 
-<%= form_with url: "/users/#{@user_id}/movies/#{@movie.movie_id}/party/new", method: :get, local: true do |f| %>
+<%= form_with url: "/movies/#{@movie.movie_id}/party/new", method: :get, local: true do |f| %>
   <%= f.hidden_field :movie_id, value: @movie.movie_id %>
   <%= f.hidden_field :title, value: @movie.movie_title %>
   <%= f.hidden_field :duration, value: @movie.duration %>
