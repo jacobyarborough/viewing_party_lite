@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def discover
-    @user_id = params[:id]
+    @user_id = session[:user_id]
   end
 
   def index

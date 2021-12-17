@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
-  get '/users/:id/discover', to: 'movies#discover'
+  get 'discover', to: 'movies#discover'
   get '/users/:id/movies', to: 'movies#index', as: "user_movies"
   get '/users/:id/movies/:movie_id', to: 'movies#show'
 
