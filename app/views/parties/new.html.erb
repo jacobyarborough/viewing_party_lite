@@ -2,7 +2,7 @@
 
 <h2>Viewing Party Details</h2>
 <br>
-<%= form_with url:"/users/#{@user_id}/movies/#{@movie[:movie_id]}/party/new", method: :post, local: true do |f| %>
+<%= form_with url:"/movies/#{@movie[:movie_id]}/party/new", method: :post, local: true do |f| %>
   <%= f.hidden_field :movie_id, value: @movie[:movie_id] %>
   <%= f.hidden_field :user_id, value: @user_id %>
   <%= f.hidden_field :image, value: @movie[:image] %>

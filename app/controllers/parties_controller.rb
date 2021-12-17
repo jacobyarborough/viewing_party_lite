@@ -2,7 +2,7 @@ class PartiesController < ApplicationController
 
   def new
     @movie = {movie_id: params[:movie_id], title: params[:title], duration: params[:duration], image: params[:image]}
-    @user_id = params[:id]
+    @user_id = session[:user_id]
     @users = User.all
   end
 

@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   get '/discover', to: 'movies#discover'
   get '/movies', to: 'movies#index', as: "user_movies"
-  get 'movies/:movie_id', to: 'movies#show'
+  get '/movies/:movie_id', to: 'movies#show'
 
   # Parties Controller
-  get '/users/:id/movies/:movie_id/party/new', to: 'parties#new'
-  post '/users/:id/movies/:movie_id/party/new', to: 'parties#create'
+  get '/movies/:movie_id/party/new', to: 'parties#new'
+  post '/movies/:movie_id/party/new', to: 'parties#create'
 end
