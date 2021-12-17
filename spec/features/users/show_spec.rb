@@ -10,7 +10,11 @@ RSpec.describe 'user dashboard page' do
     let!(:invite) { Invite.create!(user_id: user_1.id, party_id: party_3.id) }
 
     before(:each) do
-      visit "/users/#{user_1.id}"
+      visit '/login' 
+      
+      fill_in :email, with: user_1.email
+      fill_in :password, with: user_1.password
+      click_button "Login"
     end
 
     it "contains the user's name in the title" do

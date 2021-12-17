@@ -9,7 +9,7 @@ class PartiesController < ApplicationController
   def create
     party = Party.create!(party_params)
     Invite.create!(user_id: params[:user], party_id: party.id)
-    redirect_to "/users/#{params[:id]}"
+    redirect_to "/dashboard"
   end
 
   private

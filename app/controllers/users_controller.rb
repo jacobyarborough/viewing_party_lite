@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
     if user.save
       flash[:alert] = "Welcome #{user.name}!"
-      redirect_to "/users/#{user.id}"
+      session[:user_id] = user.id
+      redirect_to "/dashboard"
     else
       flash[:alers] = "Please enter a valid name and email."
       redirect_to "/register"

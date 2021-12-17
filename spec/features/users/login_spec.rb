@@ -13,7 +13,7 @@ RSpec.describe 'login page' do
 
       click_button "Login"
 
-      expect(current_path).to eq("/users/#{users.first.id}")
+      expect(current_path).to eq("/dashboard")
     end 
   end 
 

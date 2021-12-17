@@ -20,7 +20,7 @@ RSpec.describe 'landing page' do
           click_link "#{users[0][:email]}"
 
           expect(current_path).to eq("/login")
-      end
+        end
       end 
     end 
 
