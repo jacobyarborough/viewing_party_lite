@@ -19,19 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def credential_enter
-  end 
-  
-  def credential_check 
-    user = User.find_by(email: params[:email]) 
-    if user.authenticate(params[:password])
-      redirect_to "/users/#{user.id}"
-    else 
-      flash[:alerts] = 'Email and/or password are incorrect'
-      redirect_to '/login'
-    end
-  end 
-
   private
 
   def user_params
@@ -39,6 +26,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 end

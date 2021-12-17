@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   # Users Controller
   get '/register', to: 'users#new', as: 'register'
   post '/register', to: 'users#create'
-  get '/users/:id', to: 'users#show'
+  get '/dashboard', to: 'users#show'
 
-  get '/login', to: 'users#credential_enter'
-  post '/login', to: 'users#credential_check'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 
   get '/users/:id/discover', to: 'movies#discover'
   get '/users/:id/movies', to: 'movies#index', as: "user_movies"
