@@ -8,19 +8,31 @@ RSpec.describe 'landing page' do
       visit root_path
     end 
 
-    context 'when there are existing users' do 
+    context 'when there are existing users and a user is logged in' do 
       it 'shows all existing users' do 
+        visit "/login"
+        fill_in :email, with: users.first.email
+        fill_in :password, with: users.first.password
+        click_button "Login"
+        visit root_path
+
         within "#users" do
           expect(page).to have_content("Existing Users:")
           expect(page).to have_content(users[0][:email])
           expect(page).to have_content(users[1][:email])
         end
+      end 
 
-        within "#users" do
-          click_link "#{users[0][:email]}"
+      it 'has a logout button' do 
+        visit "/login"
+        fill_in :email, with: users.first.email
+        fill_in :password, with: users.first.password
+        click_button "Login"
+        visit root_path
 
-          expect(current_path).to eq("/login")
-        end
+        click_button "Logout"
+
+        expect(current_path).to eq(root_path)
       end 
     end 
 
@@ -44,18 +56,6 @@ RSpec.describe 'landing page' do
       click_button "Login"
 
       expect(current_path).to eq('/login')
-    end 
-  end 
-
-  describe 'sad path functionaily' do 
-    context 'when there are no existing users' do 
-      it 'shows all existing users' do 
-        visit root_path
-        within "#users" do 
-          expect(page).to have_content("Existing Users:")
-          expect(page).to have_content("There are no existing users. Create a new user to get started!")
-        end 
-      end 
     end 
   end 
 end 

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :verify_user, only: [:show]
 
   def show
    @user
@@ -28,5 +29,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(session[:user_id])
+  end
+
+  def verify_user
+    if !current_user 
+      flash[:alert] = "You must be signed in and/or register in order to access the page yu are trying to reach"
+      redirect_to root_path
+    end
   end
 end
