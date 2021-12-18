@@ -6,6 +6,7 @@ RSpec.describe 'login page' do
   before(:each) do
     visit '/login'
   end 
+
   context 'happy path functionality' do
     it 'will successfully login when passwords match for an existing user' do 
       fill_in :email, with: users.first.email
@@ -26,14 +27,5 @@ RSpec.describe 'login page' do
 
       expect(current_path).to eq("/login")
     end 
-
-    # it 'will return user to login page if email is left blank' do 
-    #   fill_in :email, with: ""
-    #   fill_in :password, with: 'password1'
-
-    #   click_button "Login"
-
-    #   expect(current_path).to eq("/login")
-    # end 
-  end 
+  end
 end 

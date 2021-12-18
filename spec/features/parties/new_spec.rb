@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'create viewing party' do
-  describe 'happy path' do
+  context 'happy path' do
     it 'allows user to create a viewing party' do
       VCR.use_cassette('moviedb_movies_4', re_record_interval: 7.days) do
         user = User.create!(name: "Snoopy", email: "snoopy@peanuts.com", password: 'Password1', password_confirmation: 'Password1')
@@ -27,4 +27,18 @@ RSpec.describe 'create viewing party' do
       end
     end
   end
+
+  context 'sad path' do 
+    it 'does not allow a user to create a party without being logged in' do
+      VCR.use_cassette('moviedb_movies_4', re_record_interval: 7.days) do
+
+        visit "/movies/2"
+
+        click_button "Create a Viewing Party"
+
+        expect(page).to have_content("You must be signed in and/or register in order to access the page you are trying to reach")
+        expect(current_path).to eq('/discover')
+      end
+    end 
+  end 
 end

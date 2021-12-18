@@ -6,11 +6,6 @@ RSpec.describe 'movie show page' do
       VCR.use_cassette('moviedb_movies_3', re_record_interval: 7.days) do
         user = User.create!(name: "Snoopy", email: "snoopy@peanuts.com", password: 'Password1', password_confirmation: 'Password1')
 
-        visit "/login"
-        fill_in :email, with: user.email
-        fill_in :password, with: user.password
-        click_button "Login"
-
         visit "/movies/120"
 
         expect(page.status_code).to eq 200

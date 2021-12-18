@@ -20,8 +20,8 @@ class PartiesController < ApplicationController
 
   def verify_user
     if !current_user 
-      flash[:alert] = "You must be signed in and/or register in order to access the page yu are trying to reach"
-      redirect_to root_path
+      flash[:alert] = "You must be signed in and/or register in order to access the page you are trying to reach"
+      redirect_to '/discover'
     end
   end
 end
